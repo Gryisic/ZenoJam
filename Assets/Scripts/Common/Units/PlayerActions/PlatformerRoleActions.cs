@@ -23,7 +23,6 @@ namespace ZenoJam.Common
 
         private Collider2D _collider;
         private Rigidbody2D _rigidbody;
-        private AudioSource _audioSource;
 
         private Vector2 _movementDirection;
 
@@ -137,9 +136,6 @@ namespace ZenoJam.Common
             _dashAction.DashStarted += DisableMovement;
             _dashAction.DashStarted += _animator.Dash;
             _dashAction.DashEnded += EnableMovement;
-
-            _jumpAction.LightJumpp += LightJump;
-            _jumpAction.Jump += Jump;
         }
 
         private void UnsubscribeToEvents()
@@ -149,9 +145,6 @@ namespace ZenoJam.Common
             _dashAction.DashStarted -= DisableMovement;
             _dashAction.DashStarted -= _animator.Dash;
             _dashAction.DashEnded -= EnableMovement;
-
-            _jumpAction.LightJumpp -= LightJump;
-            _jumpAction.Jump -= Jump;
         }
 
         private async UniTask TickAsync(CancellationToken token = default) 

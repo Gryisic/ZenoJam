@@ -13,7 +13,7 @@ namespace ZenoJam.Common
         public PlayableDirector Director => _director;
         public CinemachineVirtualCamera Camera => _camera;
 
-        public bool IsSeen { get; private set; } = false;
+        public bool IsSeen { get; private set; } = true;
 
         public void SetSeen() => IsSeen = true;
     }

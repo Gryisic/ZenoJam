@@ -11,7 +11,6 @@ namespace ZenoJam.Core
 
         private GameContext _gameContext;
         private SceneContext _sceneContext;
-        private UIContext _uiContext;
         private SceneChangeTrigger _sceneChangeTrigger;
         private SceneCamera _sceneCamera;
         private SceneSwitcher _sceneSwitcher;
@@ -33,7 +32,6 @@ namespace ZenoJam.Core
             if (_isConstructed == false)
             {
                 _sceneContext = _gameContext.Resolve<SceneContext>();
-                _uiContext = _sceneContext.Resolve<UIContext>();
                 _sceneCamera = _sceneContext.Resolve<SceneCamera>();
                 _sceneChangeTrigger = _sceneContext.Resolve<SceneChangeTrigger>();
                 _player = _sceneContext.Resolve<Player>();

@@ -1,6 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
-using System;
-using UnityEngine.Audio;
+﻿using System;
 using ZenoJam.Common;
 using ZenoJam.Infrastructure.Interfaces;
 using static UnityEngine.InputSystem.InputAction;
@@ -18,9 +16,6 @@ namespace ZenoJam.Core
         private CinematicBorders _borders;
         private DialogueWindow _dialogueWindow;
         private Input _input;
-        private AudioMixer _mixer;
-
-        private float _cashedVolume;
 
         private Dialogue _dialogue = new Dialogue();
 
@@ -30,7 +25,6 @@ namespace ZenoJam.Core
         {
             _gameContext = context;
             _input = _gameContext.Resolve<Input>();
-            _mixer = _gameContext.Resolve<AudioMixer>();
         }
 
         public void Activate(GameModeArgs args)
@@ -56,16 +50,10 @@ namespace ZenoJam.Core
 
             _dialogue.Initiate(args.DialogueProvider);
             _sceneCamera.Focus(args.DialogueProvider.Transform);
-
-            _mixer.GetFloat("Music", out float value);
-            _cashedVolume = value;
-            _mixer.SetFloat("Music", value - 15);
         }
 
         public void Deactivate()
         {
-            _mixer.SetFloat("Music", _cashedVolume);
-
             _dialogue.SentencePrinting -= _dialogueWindow.ToggleNextSentenceImage;
             _dialogue.NamePrinted -= _dialogueWindow.UpdateName;
             _dialogue.LetterPrinted -= _dialogueWindow.UpdateSentence;

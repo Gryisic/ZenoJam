@@ -33,6 +33,8 @@ namespace ZenoJam.Core
             _sceneSwitcher.SceneChanged -= RegisterSceneContext;
         }
 
+        public T Resolve<T>() => (T)_registeredTypes[typeof(T)];
+
         private void RegisterSceneContext(SceneContext context)
         {
             if (_registeredTypes.ContainsKey(typeof(SceneContext)))
@@ -41,8 +43,6 @@ namespace ZenoJam.Core
             context.Construct();
             RegisterInstance(context);
         }
-
-        public T Resolve<T>() => (T) _registeredTypes[typeof(T)];
 
         private void RegisterInstance<T>(T instance) => _registeredTypes.Add(typeof(T), instance);
 

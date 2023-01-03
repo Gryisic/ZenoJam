@@ -14,10 +14,6 @@ namespace ZenoJam.Core
         [SerializeField] private EnemySpawner _enemySpawner;
         [SerializeField] private TriggersContainer _triggersContainer;
 
-        [SerializeField] private StartButton _startButton;
-        [SerializeField] private ExitButton _exitButton;
-        [SerializeField] private VolumeSlider _volumeSlider;
-
         private Dictionary<Type, object> _registeredTypes;
 
         public IReadOnlyDictionary<Type, object> RegisteredTypes => _registeredTypes;
@@ -31,10 +27,6 @@ namespace ZenoJam.Core
             RegisterInstance(_uiContext);
             RegisterInstance(_camera);
             RegisterInstance(_sceneChangeTrigger);
-
-            RegisterInstance(_startButton);
-            RegisterInstance(_exitButton);
-            RegisterInstance(_volumeSlider);
 
             SpawnEnemies();
         }

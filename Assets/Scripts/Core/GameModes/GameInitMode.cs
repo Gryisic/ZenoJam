@@ -30,12 +30,12 @@ namespace ZenoJam.Core
 
         private void OnSceneChanged(SceneContext obj)
         {
-            Finished?.Invoke(new GameModeArgs(GameModeType.MainMenuMode));
+            Finished?.Invoke(new GameModeArgs(GameModeType.GameplayMode));
         }
 
         private async UniTask ChangeSceneAsync() 
         {
-            await _sceneSwitcher.ChangeSceneAsync(SceneType.MainMenu);
+            await _sceneSwitcher.ChangeSceneAsync(SceneType.Prologue);
         }
     }
 }

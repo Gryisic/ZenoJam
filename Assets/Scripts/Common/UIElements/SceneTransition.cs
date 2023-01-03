@@ -10,13 +10,16 @@ namespace ZenoJam.Common
 
         private Vector2 _outPosition = new Vector2(2000, 0);
 
-        public override void Activate() => animator.Slide(_rectTransform, Vector2.zero);
-
-        public override void Deactivate()
+        public override void Activate() 
         {
             if (_rectTransform == null)
                 _rectTransform = GetComponent<RectTransform>();
 
+            animator.Slide(_rectTransform, Vector2.zero); 
+        }
+
+        public override void Deactivate()
+        {
             animator.Slide(_rectTransform, _outPosition);
 
             ReturnToInitialPositionAsync().Forget();

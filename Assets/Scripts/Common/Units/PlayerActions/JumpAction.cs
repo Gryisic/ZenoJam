@@ -9,8 +9,6 @@ namespace ZenoJam.Common
     public class JumpAction 
     {
         public event Action<float, bool> InAir;
-        public event Action Jump;
-        public event Action LightJumpp;
 
         private GroundCheckData _groundCheckData;
         private Rigidbody2D _rigidbody;
@@ -27,7 +25,6 @@ namespace ZenoJam.Common
         {
             if (_canJump)
             {
-                Jump?.Invoke();
                 _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, Constants.JUMP_FORCE);
             }
         }
@@ -56,7 +53,6 @@ namespace ZenoJam.Common
         {
             if (IsGrounded() == false)
             {
-                LightJumpp?.Invoke();
                 _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, Constants.JUMP_FORCE / 2);
             }
         }
